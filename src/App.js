@@ -1,8 +1,15 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import './App.less'
-
+import MenuContent from './components/MenuContent.jsx'
+import CustomScroll from './components/CustomScroll.jsx'
+import ScrollReveal from 'scrollreveal'
 function App() {
   const [isActive, setIsActive] = useState(false)
+  const [scrollHidden, setScrollHidden] = useState(true)
+  const dom = useRef(null)
+  useEffect(() => {
+    ScrollReveal().reveal(dom.current, {delay: 500, duration: 1000})
+  }, [])
   const clickOnMenuButton = () => {
     setIsActive(isActive => {
       return !isActive
@@ -19,47 +26,20 @@ function App() {
           <div className="moby">MOBY</div>
         </div>
       </header>
-
-      <div className={`menu-content ${isActive ? 'is-active' : ''}`}>
-        <div className="menu-wrapper">
-          <div className="menu-col">
-            <span className="item-wrapper">
-              <span className="items">
-                <span className="item-title">A</span>
-                <span className="item">a</span>
-                <span className="item">a</span>
-              </span>
-            </span>
-          </div>
-          <div className="menu-col">
-            <span className="item-wrapper">
-              <span className="items">
-                <span className="item-title">A</span>
-                <span className="item">a</span>
-                <span className="item">a</span>
-              </span>
-            </span>
-          </div>
-          <div className="menu-col">
-            <span className="item-wrapper">
-              <span className="items">
-                <span className="item-title">A</span>
-                <span className="item">a</span>
-                <span className="item">a</span>
-              </span>
-            </span>
-          </div>
-          <div className="menu-col">
-            <span className="item-wrapper">
-              <span className="items">
-                <span className="item-title">A</span>
-                <span className="item">a</span>
-                <span className="item">a</span>
-              </span>
-            </span>
+      <main className="main">
+        <div className="banner-home">
+          <div className="banner-wrap">
+            <div className="banner-title slide-up">
+              <div className="title-info " ref={dom}>
+                Développons ensemble votre stratégie digitale
+              </div>
+            </div>
+            <div className="banner-image slide-up"></div>
           </div>
         </div>
-      </div>
+        <CustomScroll></CustomScroll>
+      </main>
+      <MenuContent isActive={isActive}></MenuContent>
     </div>
   )
 }
