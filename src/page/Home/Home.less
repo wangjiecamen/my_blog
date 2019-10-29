@@ -1,0 +1,34 @@
+.banner-home {
+  padding-bottom: 50px;
+  height: calc(100vh - 130px);
+  .banner-wrap {
+    display: flex;
+    height: 625px;
+    position: relative;
+    .banner-image {
+      flex: 65%;
+      overflow: hidden;
+      .image {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        transition: transform 0.8s ease;
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+    .banner-title {
+      flex: 35%;
+      font-size: 60px;
+      z-index: 1;
+      .title-info {
+        position: absolute;
+        top: 26%;
+        left: 10%;
+        width: 500px;
+        letter-spacing: 2px;
+      }
+    }
+  }
+}

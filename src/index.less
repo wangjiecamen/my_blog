@@ -8,7 +8,18 @@ body {
 body {
   padding-left: 80px;
   font-family: 'PT Serif', serif;
-  // &::-webkit-scrollbar {
-  //   width: 0 !important;
-  // }
+  &::-webkit-scrollbar {
+    width: 0 !important;
+  }
+}
+#root {
+  position: relative;
+  overflow: hidden;
+}
+::selection {
+  background-color: #d8d8d8;
+}
+a {
+  text-decoration: none;
+  color: #000;
 }

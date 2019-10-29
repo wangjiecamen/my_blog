@@ -133,13 +133,9 @@
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
+    cursor: pointer;
     .item-title {
-      font-size: 20px;
-      margin-bottom: 20px;
-    }
-    .item {
-      margin-bottom: 5px;
-      cursor: pointer;
+      font-size: 30px;
     }
   }
   &:hover {
@@ -169,47 +165,28 @@
 .main {
   min-height: 100vh;
 }
-
-.banner-home {
-  padding-bottom: 80px;
-  padding-top: 50px;
-  height: calc(100vh - 130px);
-  .banner-wrap {
-    display: flex;
-    height: 500px;
-    position: relative;
-    .banner-image {
-      background-image: url('./assets/media/banner.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      flex: 70%;
-    }
-    .banner-title {
-      flex: 30%;
-      font-size: 50px;
-      .title-info {
-        position: absolute;
-        top: 26%;
-        left: 5%;
-        width: 500px;
-      }
-    }
-  }
+.contract-wrap {
+  overflow: hidden;
 }
-.custom-scroll {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  width: 8px;
-  height: 100%;
-  background-color: transparent;
-  .scrollbar-thumb {
+.contract {
+  height: 80px;
+  line-height: 80px;
+  float: right;
+  margin-right: 60px;
+  font-size: 20px;
+  position: relative;
+  cursor: pointer;
+  &:hover::after {
+    width: 100%;
+    transition: width 0.3s ease-out;
+  }
+  &::after {
+    content: '';
+    display: block;
     position: absolute;
-    top: 0px;
-    right: 0px;
-    height: 130px;
-    width: 8px;
-    border-radius: 4px;
-    background: rgba(0, 0, 0, 0.5);
+    width: 0;
+    height: 1px;
+    background-color: #000;
+    top: 56px;
   }
 }
