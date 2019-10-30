@@ -1,28 +1,37 @@
 import React, {useState, useEffect} from 'react'
 import './App.less'
-import MenuContent from './components/MenuContent.jsx'
-import ScrollReveal from 'scrollreveal'
-import {slideBottom, slideRight} from './utils/slideParam'
 import {Scrollbars} from 'react-custom-scrollbars'
-import {Router, Link} from '@reach/router'
+import {Router, Location} from '@reach/router'
 import HomePage from './page/Home/Home.jsx'
 import CodePage from './page/Code/Code.jsx'
+import {TransitionGroup, CSSTransition} from 'react-transition-group'
+import Menu from './components/Menu/Menu'
 function App() {
-  const [isActive, setIsActive] = useState(false)
   const [height, setHeight] = useState('')
   useEffect(() => {
     setHeight(document.body.clientHeight)
-    ScrollReveal().reveal('.slide-right', slideRight)
-    ScrollReveal().reveal('.slide-bottom', slideBottom)
     return () => {}
   }, [])
-  const clickOnMenuButton = () => {
-    setIsActive(isActive => {
-      return !isActive
-    })
-  }
-  const closeMenu = () => {
-    setIsActive(false)
+
+  const FadeTransitionRouter = props => (
+    <Location>
+      {({location}) => (
+        <TransitionGroup className="transition-group">
+          <CSSTransition key={location.key} classNames="fade" timeout={500}>
+            <Router location={location} className="router">
+              {props.children}
+            </Router>
+          </CSSTransition>
+        </TransitionGroup>
+      )}
+    </Location>
+  )
+  const Contract = () => {
+    return (
+      <div className="contract-wrap">
+        <div className="contract">contract</div>
+      </div>
+    )
   }
   return (
     <Scrollbars
@@ -33,25 +42,14 @@ function App() {
       autoHideDuration={800}
     >
       <div className="container">
-        <header>
-          <div
-            className={`menu-button ${isActive ? 'is-active' : ''}`}
-            onClick={clickOnMenuButton}
-          ></div>
-          <div className="sub-menu">
-            <div className="moby">MOBY</div>
-          </div>
-        </header>
+        <Menu />
         <main className="main">
-          <div className="contract-wrap">
-            <div className="contract">contract</div>
-          </div>
-          <Router>
+          <Contract />
+          <FadeTransitionRouter>
             <HomePage path="/"></HomePage>
             <CodePage path="/code"></CodePage>
-          </Router>
+          </FadeTransitionRouter>
         </main>
-        <MenuContent isActive={isActive} closeMenu={closeMenu}></MenuContent>
       </div>
     </Scrollbars>
   )

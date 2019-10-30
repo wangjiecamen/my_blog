@@ -1,5 +1,5 @@
 import React from 'react'
-import {redirectTo, Link} from '@reach/router'
+import {Link} from '@reach/router'
 
 export default function MenuContent({isActive, closeMenu}) {
   const close = () => {
@@ -20,21 +20,27 @@ export default function MenuContent({isActive, closeMenu}) {
         <div className="menu-col">
           <div className="item-wrapper">
             <div className="item-block">
-              <div className="item-title">Art</div>
+              <div className="item-title" onClick={close}>
+                Art
+              </div>
             </div>
           </div>
         </div>
         <div className="menu-col">
           <div className="item-wrapper">
             <div className="item-block">
-              <div className="item-title">News</div>
+              <div className="item-title" onClick={close}>
+                News
+              </div>
             </div>
           </div>
         </div>
         <div className="menu-col">
           <div className="item-wrapper">
             <div className="item-block">
-              <div className="item-title">Diary</div>
+              <div className="item-title" onClick={close}>
+                Diary
+              </div>
             </div>
           </div>
         </div>
