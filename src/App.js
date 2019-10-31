@@ -8,11 +8,14 @@ import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import Menu from './components/Menu/Menu'
 function App() {
   const [height, setHeight] = useState('')
+  const [showScroll, setShowScroll] = useState('')
   useEffect(() => {
     setHeight(document.body.clientHeight)
+
+    let timer = setTimeout(scroll, 500)
     return () => {}
   }, [])
-
+  const scroll = () => {}
   const FadeTransitionRouter = props => (
     <Location>
       {({location}) => (
@@ -49,6 +52,7 @@ function App() {
             <HomePage path="/"></HomePage>
             <CodePage path="/code"></CodePage>
           </FadeTransitionRouter>
+          <div className={`scroll-tip ${showScroll}`}>Scroll</div>
         </main>
       </div>
     </Scrollbars>

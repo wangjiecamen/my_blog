@@ -30,7 +30,7 @@ export default function MenuContent({isActive, closeMenu}) {
           <div className="item-wrapper">
             <div className="item-block">
               <div className="item-title" onClick={close}>
-                News
+                Hobby
               </div>
             </div>
           </div>
@@ -39,7 +39,7 @@ export default function MenuContent({isActive, closeMenu}) {
           <div className="item-wrapper">
             <div className="item-block">
               <div className="item-title" onClick={close}>
-                Diary
+                Essays
               </div>
             </div>
           </div>
